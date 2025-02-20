@@ -4,29 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>恋みくじ</title>
+    <title>恋みくじ（あみだくじ）</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
+
     <h1>今日の恋みくじ</h1>
-    <div class="omikuji-box">
-        <button class="button" onclick="drawOmikuji()">おみくじを引く</button>
-        <div class="result-container">
-            <div class="result-box">
-                <p id="result"></p>
-            </div>
-            <div class="result-box">
-                <p id="advice"></p>
-                <p id="lucky-item"></p>
-            </div>
-        </div>
+
+    <div class="amida-container">
+        <canvas id="amidaCanvas"></canvas>
     </div>
 
+    <div class="start-container">
+        <button onclick="startAmida()">スタート</button>
+    </div>
+
+    <div class="result-container">
+        <p id="result"></p>
+        <p id="advice"></p>
+        <p id="lucky-item"></p>
+        <button id="lucky-button" style="display:none;">ラッキーアイテム</button>
+    </div>
 
     <script src="style.js"></script>
-
 
 </body>
 
