@@ -13,10 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // **結果の確率を設定**
     const resultProbabilities = [
-        { result: "大吉", probability: 0.1 },  // 10%
-        { result: "中吉", probability: 0.2 },  // 20%
-        { result: "小吉", probability: 0.3 },  // 30%
-        { result: "吉", probability: 0.25 },   // 25%
+        { result: "大吉", probability: 0.03 },  // 3%
+        { result: "中吉", probability: 0.17 },  // 17%
+        { result: "小吉", probability: 0.25 },  // 25%
+        { result: "吉", probability: 0.4 },   // 40%
         { result: "凶", probability: 0.15 }    // 15%
     ];
 
@@ -147,7 +147,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
             luckyButton.style.display = "none"; 
         };
+
+        if (result === "大吉") {
+            showCrackerAnimation();
+        }
     }
+
+    // クラッカーを表示する関数
+function showCrackerAnimation() {
+    let leftCracker = document.getElementById("cracker-left");
+    let rightCracker = document.getElementById("cracker-right");
+
+    // クラッカーをスライドイン
+    leftCracker.classList.add("show");
+    rightCracker.classList.add("show");
+
+    // 紙吹雪を作成
+    for (let i = 0; i < 30; i++) {
+        createConfetti();
+    }
+
+    // 数秒後にクラッカーを隠す
+    setTimeout(() => {
+        leftCracker.classList.remove("show");
+        rightCracker.classList.remove("show");
+    }, 3000);
+}
+
+// 紙吹雪を作成する関数
+function createConfetti() {
+    let confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * window.innerWidth + "px";
+    confetti.style.backgroundColor = getRandomColor();
+    document.body.appendChild(confetti);
+
+    setTimeout(() => {
+        confetti.remove();
+    }, 2000);
+}
+
+// ランダムな色を返す関数
+function getRandomColor() {
+    const colors = ["red", "blue", "yellow", "green", "pink", "purple", "orange"];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
 
     window.startAmida = startAmida;
 

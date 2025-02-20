@@ -44,3 +44,45 @@ h1 {
 .button:hover {
     background-color: #d6336c;
 }
+
+/* クラッカーの初期状態（画面外） */
+#cracker-container {
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.cracker {
+    width: 100px;
+    opacity: 0;
+    transform: translateX(-150px);
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+#cracker-right {
+    transform: translateX(150px);
+}
+
+/* アニメーション適用 */
+.cracker.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 紙吹雪のアニメーション */
+@keyframes confetti {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(300px) rotate(360deg); opacity: 0; }
+}
+
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: randomColor();
+    opacity: 1;
+    animation: confetti 2s linear forwards;
+}
